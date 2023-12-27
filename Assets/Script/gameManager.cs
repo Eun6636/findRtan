@@ -24,7 +24,8 @@ public class gameManager : MonoBehaviour
 
     public GameObject minusTime;   //타임감소
 
-    public GameObject endTxt;
+    public GameObject endTxt; // 다시하기 버튼으로 변경
+    public Text Bestleave;
 
     //레벨 설정
     float time = 60f;
@@ -88,7 +89,7 @@ public class gameManager : MonoBehaviour
             audioManager.GetComponent<audioManager>().backMusicpitch();
         }
 
-
+        BestScore();//베스트 스코어 갱신
     }
 
 
@@ -121,9 +122,8 @@ public class gameManager : MonoBehaviour
             {
                 //점수 계산
                 Score(time,MathNum);
-                BestScore();//베스트 스코어 갱신
-                N_Score.text = N_ScoreInt.ToString();
-                B_Score.text = B_ScoreInt.ToString();
+                
+                
 
                 //클리어 레벨을 Stage 씬에게 넘겨주기
 
@@ -321,7 +321,11 @@ public class gameManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("BestScore1", N_ScoreInt);
                     B_ScoreInt = N_ScoreInt;
+
                 }
+                N_Score.text = N_ScoreInt.ToString();
+                B_Score.text = B_ScoreInt.ToString();
+                Bestleave.text = B_ScoreInt.ToString();
                 break;
             case 2:
                 B_ScoreInt = PlayerPrefs.GetInt("BestScore2");
@@ -329,7 +333,12 @@ public class gameManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("BestScore2", N_ScoreInt);
                     B_ScoreInt = N_ScoreInt;
+
+
                 }
+                N_Score.text = N_ScoreInt.ToString();
+                B_Score.text = B_ScoreInt.ToString();
+                Bestleave.text = B_ScoreInt.ToString();
                 break;
             case 3:
                 B_ScoreInt = PlayerPrefs.GetInt("BestScore3");
@@ -338,6 +347,9 @@ public class gameManager : MonoBehaviour
                     PlayerPrefs.SetInt("BestScore3", N_ScoreInt);
                     B_ScoreInt = N_ScoreInt;
                 }
+                N_Score.text = N_ScoreInt.ToString();
+                B_Score.text = B_ScoreInt.ToString();
+                Bestleave.text = B_ScoreInt.ToString();
                 break;
             case 4:
                 B_ScoreInt = PlayerPrefs.GetInt("BestScore4");
@@ -346,9 +358,10 @@ public class gameManager : MonoBehaviour
                     PlayerPrefs.SetInt("BestScore4", N_ScoreInt);
                     B_ScoreInt = N_ScoreInt;
                 }
+                N_Score.text = N_ScoreInt.ToString();
+                B_Score.text = B_ScoreInt.ToString();
+                Bestleave.text = B_ScoreInt.ToString();
                 break;
-
-
 
         }
 
