@@ -62,7 +62,6 @@ public class gameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("BestScore", 0);
 
         MathNum = 0;
         Time.timeScale = 1.0f;
@@ -312,35 +311,51 @@ public class gameManager : MonoBehaviour
 
     void BestScore()  //* 베스트 스코어 갱신
     {
-        B_ScoreInt = PlayerPrefs.GetInt("BestScore");
-        if (B_ScoreInt < N_ScoreInt)
+        int LV = PlayerPrefs.GetInt("Level");
+
+        switch(LV)
         {
-            PlayerPrefs.SetInt("BestScore", N_ScoreInt);
-            B_ScoreInt = N_ScoreInt;
+            case 1:
+                B_ScoreInt = PlayerPrefs.GetInt("BestScore1");
+                if (B_ScoreInt < N_ScoreInt)
+                {
+                    PlayerPrefs.SetInt("BestScore1", N_ScoreInt);
+                    B_ScoreInt = N_ScoreInt;
+                }
+                break;
+            case 2:
+                B_ScoreInt = PlayerPrefs.GetInt("BestScore2");
+                if (B_ScoreInt < N_ScoreInt)
+                {
+                    PlayerPrefs.SetInt("BestScore2", N_ScoreInt);
+                    B_ScoreInt = N_ScoreInt;
+                }
+                break;
+            case 3:
+                B_ScoreInt = PlayerPrefs.GetInt("BestScore3");
+                if (B_ScoreInt < N_ScoreInt)
+                {
+                    PlayerPrefs.SetInt("BestScore3", N_ScoreInt);
+                    B_ScoreInt = N_ScoreInt;
+                }
+                break;
+            case 4:
+                B_ScoreInt = PlayerPrefs.GetInt("BestScore4");
+                if (B_ScoreInt < N_ScoreInt)
+                {
+                    PlayerPrefs.SetInt("BestScore4", N_ScoreInt);
+                    B_ScoreInt = N_ScoreInt;
+                }
+                break;
+
+
+
         }
+
+        
     }
 
 
-    /*
-     int[] rtans = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-
-        rtans = rtans.OrderBy(item => Random.Range(-1.0f, 1.0f)).ToArray();
-
-        for (int i = 0; i < 16; i++)
-        {
-           
-
-            GameObject newCard = Instantiate(card);
-            newCard.transform.parent = GameObject.Find("Cards").transform;
-
-            float x = (i / 4) * 1.4f - 2.1f;
-            float y = (i % 4) * 1.4f - 3.0f;
-            newCard.transform.position = new Vector3(x, y, 0);
-
-            string rtanName = "rtan" + rtans[i].ToString();
-            newCard.transform.Find("back").transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(rtanName);
-
-        }
-     */
+    
 
 }
